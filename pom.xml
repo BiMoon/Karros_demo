@@ -1,0 +1,157 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Karror_demo</groupId>
+  <artifactId>Karror_demo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <properties>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+         <maven.compiler.source>1.8</maven.compiler.source>
+         <maven.compiler.target>1.8</maven.compiler.target>
+ 		 <testng.version>6.9.10</testng.version>
+  </properties>
+  <dependencies>
+  		<dependency>
+  			<groupId>org.apache.poi</groupId>
+  			<artifactId>poi</artifactId>
+  			<version>4.1.2</version>
+  		</dependency>
+  		<dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+       
+        </dependency>
+        
+        <!-- cucumber -->
+        <dependency>
+	        <groupId>io.cucumber</groupId>
+	        <artifactId>cucumber-junit</artifactId>
+	        <version>1.2.6</version>
+	   
+	    </dependency>
+    
+    
+ 		<dependency>
+    		<groupId>io.cucumber</groupId>
+    		<artifactId>cucumber-testng</artifactId>
+   			 <version>6.10.1</version>
+		</dependency>
+		
+        
+		<dependency>
+    			<groupId>info.cukes</groupId>
+   				 <artifactId>cucumber-java</artifactId>
+    			<version>1.2.6</version>
+		</dependency>
+		<dependency>
+	        <groupId>info.cukes</groupId>
+	        <artifactId>cucumber-picocontainer</artifactId>
+	        <version>1.2.6</version>
+	 
+	    </dependency>
+		<dependency> 
+   			<groupId>info.cukes</groupId> 
+   			<artifactId>cucumber-junit</artifactId> 
+   			<version>1.2.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>1.2.6</version>
+		
+		</dependency>
+		
+        <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
+		<dependency>
+		    <groupId>com.opencsv</groupId>
+		    <artifactId>opencsv</artifactId>
+		    <version>5.3</version>
+		</dependency>
+		
+		<dependency>
+			 <groupId>org.springframework.boot</groupId>
+			 <artifactId>spring-boot-starter</artifactId>
+			 <version>2.4.3</version>
+			 <exclusions>
+			     <exclusion>
+			     <groupId>org.springframework.boot</groupId>
+			     <artifactId>spring-boot-starter-logging</artifactId>
+			     </exclusion>
+			 </exclusions>
+		</dependency>
+		
+  		<dependency>
+  			<groupId>junit</groupId>
+  			<artifactId>junit</artifactId>
+  			<version>4.12</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>org.apache.poi</groupId>
+  			<artifactId>poi-ooxml</artifactId>
+  			<version>4.1.2</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>org.seleniumhq.selenium</groupId>
+  			<artifactId>selenium-java</artifactId>
+  			<version>3.141.59</version>
+  		</dependency>
+  		<dependency>
+	      <groupId>org.apache.maven.plugins</groupId>
+	      <artifactId>maven-clean-plugin</artifactId>
+	      <version>3.1.0</version>
+	      <type>maven-plugin</type>
+	    </dependency>
+  		
+  		<dependency>
+    		<groupId>org.codehaus.plexus</groupId>
+    		<artifactId>plexus-digest</artifactId>
+    		<version>1.0</version>
+			</dependency>
+  	</dependencies>
+  <build>
+    <plugins>
+        <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+              <archive>
+                     <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>Karros_demo.java.Application</mainClass>
+                     </manifest>
+                    </archive>
+            </configuration>
+        </plugin>
+     
+	 <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <!-- I don't specify version at all (Spring Boot can autoconfigure plugin version) -->
+        <executions>
+            <execution>
+                <!-- changed <id> to <phase>, but I don't know whether it's important or not. -->
+                <phase>integration-test</phase>
+                <!-- ... no changes here: the same as in the question ... -->
+            </execution>
+        </executions>
+    </plugin>
+	<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M5</version>
+            <configuration>
+                <reuseForks>true</reuseForks>
+		        <suiteXmlFiles>
+		       	<suiteXmlFile>testng.xml</suiteXmlFile>
+    		    </suiteXmlFiles>
+				<testFailureIgnore>true</testFailureIgnore>
+            </configuration>
+        </plugin>
+	            
+    </plugins>
+
+  </build>
+  
+</project>
