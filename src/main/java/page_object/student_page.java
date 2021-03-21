@@ -162,7 +162,7 @@ public class student_page extends BasePage{
 					
 					int rows_count = rows_table.size();
 					
-					if (rows_count == 0) {System.out.println("There is such School found");}
+					if (rows_count == 0) {System.out.println("There is no such School found");}
 					
 					else {	
 						//Loop will execute till the last row of table.
@@ -249,10 +249,10 @@ public class student_page extends BasePage{
 				 
 				 System.out.print("Searching student ID: "+ id_search +" pls wait ...");
 					
-				 	if (found_id == true) {System.out.print("Student " + id_search +" is added successfullty" +"\n");}
+				 	if (found_id == true) {System.out.print("Student " + id_search +" is added successfully" +"\n");}
 				 	else 
 				 	{
-				 		System.out.println("Student is " +id_search + " NOT added successfullty");
+				 		System.out.println("Student is " +id_search + " NOT added successfully");
 				 
 				 		found = false;
 				 	}

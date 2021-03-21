@@ -41,10 +41,15 @@ public class login_page extends BasePage {
 		wait.until(ExpectedConditions.elementToBeClickable(login_bt));
 	
 		if (login_bt.isDisplayed()){
-			System.out.println("\n" +"Login page is dispalayed");
+			
+			System.out.println("\n" +"Login page is displayed");
+			
 			System.out.println("\n" +"Entering username/password");
+			
 			user_send.sendKeys(user);
+			
 			pass_send.sendKeys(pass);
+			
 			while (driver.getTitle().contains("Login"))
 				{
 					login_bt.click();
@@ -56,7 +61,7 @@ public class login_page extends BasePage {
 		
 		else 
 		{
-			System.out.println("\n" +"Login page could not be dispalayed");
+			System.out.println("\n" +"Login page could not be displayed");
 			return false;
 		}
 
