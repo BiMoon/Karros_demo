@@ -138,57 +138,60 @@ public class student_page extends BasePage{
 	}
 	
 	public Boolean filter_school(String school_name) {
-		
-		/* check if table is empty >>> Print no student in this school
-		 * PASSED: all entries list should be equal to input School name 
-		 * Otherwise FAILED	
-		 */
-		Boolean found = true;
-		
-		sh_filter.clear();
-
-		sh_filter.sendKeys(school_name);
-		
-		search_bt.click();
-		try {
-		
-			Thread.sleep(2000);
 			
-			List rows_table = driver.findElements(By.tagName("mat-row"));
-			//System.out.println("No of cols are : " +rows_table.size()); 
+			/* check if table is empty >>> Print no student in this school
+			 * PASSED: all entries list should be equal to input School name 
+			 * Otherwise FAILED	
+			 */
+			Boolean found = true;
 			
-			int rows_count = rows_table.size();
+					
+			try {
 			
-			if (rows_count == 0) {System.out.println("There is such School found");}
-			
-			else {	
-				//Loop will execute till the last row of table.
-			    for (int row=0; row<rows_count; row++){
-			    	//To locate columns(cells) of that specific row.
-			    	List<WebElement> Columns_row = ((WebElement) rows_table.get(row)).findElements(By.tagName("mat-cell"));
-			    	//Get School name of each listed entries
-			    	String id_school = Columns_row.get(4).getText();
-			        
-			    	if (school_name.equals(id_school))
-			        
-			        {  found = false; // expect all entries have same school name as school_name parameter, if not result FAILED
-			         	break;
-			         }
-			    }
+				Thread.sleep(2000);
+				sh_filter.clear();
+	
+				sh_filter.sendKeys(school_name);
+	
+				search_bt.click();
+				try {
+					
+					Thread.sleep(3000);
+					List rows_table = driver.findElements(By.tagName("mat-row"));
+					//System.out.println("No of cols are : " +rows_table.size()); 
+					
+					int rows_count = rows_table.size();
+					
+					if (rows_count == 0) {System.out.println("There is such School found");}
+					
+					else {	
+						//Loop will execute till the last row of table.
+					    for (int row=0; row<rows_count; row++){
+					    	//To locate columns(cells) of that specific row.
+					    	List<WebElement> Columns_row = ((WebElement) rows_table.get(row)).findElements(By.tagName("mat-cell"));
+					    	//Get School name of each listed entries
+					    	String id_school = Columns_row.get(4).getText();
+					    	
+					    	
+					    	if (!school_name.equals(id_school))
+					        
+					        {  found = true; // expect all entries have same school name as school_name parameter, if not result FAILED
+					         	break;
+					         }
+					    }
+					}
+				    if (!found) {System.out.println("Something wrong with filter");}
+					else 
+						{ System.out.println("Filter works correctly");}
+					}
+			    finally {};
+				
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		    if (!found) {System.out.println("Something wrong with filter");}
-			else 
-				{ System.out.println("Filter works correctly");}
-			
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return found;
 		}
-		return found;
-		
-		
-	    
-	}
 	
 	public Boolean verify_student() throws CsvValidationException, Exception {
 	

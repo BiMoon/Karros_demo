@@ -80,7 +80,7 @@ public class Karros_demo_test extends open_browser{
 			e.printStackTrace();
 		}
 	}
-//@Test
+@Test
 	public void filter_school() throws Exception {
 	
 	try {
