@@ -220,7 +220,7 @@ public class student_page extends BasePage{
 			
 				try {
 				
-					Thread.sleep(3000);
+					Thread.sleep(2500);// wait for next page complete load after click next page
 					  
 					List rows_table_temp = driver.findElements(By.tagName("mat-row"));
 					//number of rows Student after table is loaded.
